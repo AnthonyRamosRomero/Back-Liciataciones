@@ -46,8 +46,7 @@ namespace Proyecto_Licitacion.Services
 
         public async Task<DetalleRequerimiento> save(DetalleRequerimiento detallerequerimiento)
         {
-            
-                detallerequerimiento.Dml = "I";
+               detallerequerimiento.Dml = "I";
                 detallerequerimiento.UpDateTime = new DateTime();
                 detallerequerimiento.CreateTime = new DateTime();
                 dbContext.DetalleRequerimientos.Add(detallerequerimiento);
