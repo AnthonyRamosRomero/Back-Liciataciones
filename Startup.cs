@@ -11,6 +11,7 @@ using Microsoft.OpenApi.Models;
 using Proyecto_Licitacion.Global.Config.Cors;
 using Proyecto_Licitacion.Global.Config.DBContext;
 
+
 namespace Proyecto_Licitacion
 {
     public class Startup
