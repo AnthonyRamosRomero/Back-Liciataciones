@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Proyecto_Licitacion.Global.Config.DBContext;
@@ -53,5 +54,42 @@ namespace Proyecto_Licitacion.Services
             return requerimiento;
         }
 
+    
+    /********************MIGRATE DATA**********************/
+    private const int ID = 0;
+    private const int TIPO_REQUERIMIENTO= 1;
+    private const int AREA_SOLICITANTE= 2;
+    private const int CONFIG_PROCESO = 3;
+    private const int USUARIO_SOLICITANTE = 4;
+    private const int FECHA_SOLICITUD = 5;
+    private const int FECHA_ESTIMADA_ENTREGA = 6;
+
+        public async Task<List<Requerimiento>> migrateCsvData(string file)
+    {
+        List<Requerimiento> colection = new List<Requerimiento>();
+        string[] st = System.IO.File.ReadAllLines(file);
+        List<String> filas = st.ToList();
+        filas
+            .Where(fila => fila != filas[0])
+            .ToList()
+            .ForEach(fila =>
+            {
+                string[] atributo = fila.Split(";");
+                Requerimiento Requerimiento = new Requerimiento();
+                    //tipoRequerimiento.Id = int.Parse(atributo[ID]);
+                Requerimiento.TipoRequerimientoId = int.Parse(atributo[TIPO_REQUERIMIENTO]);
+                Requerimiento.AreaSolicitanteId = int.Parse(atributo[AREA_SOLICITANTE]);
+                Requerimiento.ConfigProcesoId = int.Parse(atributo[CONFIG_PROCESO]);
+                Requerimiento.UsuarioSolicitante = atributo[USUARIO_SOLICITANTE];
+                Requerimiento.FechaSolicitud = atributo[FECHA_ESTIMADA_ENTREGA];
+                Requerimiento.FechaEstimadaEntrega = atributo[FECHA_ESTIMADA_ENTREGA];
+                Requerimiento.Dml = "I";
+                dbContext.Requerimientos.AddAsync(Requerimiento);
+                colection.Add(Requerimiento);
+            });
+        await dbContext.SaveChangesAsync();
+        return colection;
     }
+
+}
 }

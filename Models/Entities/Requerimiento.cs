@@ -16,7 +16,8 @@ namespace Proyecto_Licitacion.Models.Entities
         public TipoRequerimiento TipoRequerimiento { get; set; }
         public int AreaSolicitanteId { get; set; }
         public AreaSolicitante AreaSolicitante { get; set; }
-        public int ConfigProceso { get; set; }
+        public int ConfigProcesoId { get; set; }
+        public ConfigProceso ConfigProceso { get; set; }
         public string UsuarioSolicitante { get; set; }
         public string FechaSolicitud { get; set; }
         public string FechaEstimadaEntrega { get; set; }

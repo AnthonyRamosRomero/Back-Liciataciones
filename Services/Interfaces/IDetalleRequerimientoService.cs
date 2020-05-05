@@ -15,5 +15,8 @@ namespace Proyecto_Licitacion.Services.Interfaces
             Task<List<DetalleRequerimiento>> finAll();
             Task<DetalleRequerimiento> findById(int Id);
             Task<DetalleRequerimiento> deleteById(int Id);
-        }
+        /*Carga de data*/
+        Task<List<DetalleRequerimiento>> migrateCsvData(string file);
+
+    }
 }

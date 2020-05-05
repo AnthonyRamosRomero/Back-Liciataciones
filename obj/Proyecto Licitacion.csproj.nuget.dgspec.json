@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\UCH\\Ciclo VII\\01- Desarrollo de Software\\Proyecto Desarrollo II\\Back end\\Respaldo\\Proyecto Licitacion\\Proyecto Licitacion.csproj": {}
+    "C:\\Users\\JersonMisael\\Downloads\\Back-Liciataciones\\Back-Liciataciones\\Proyecto Licitacion.csproj": {}
   },
   "projects": {
-    "D:\\UCH\\Ciclo VII\\01- Desarrollo de Software\\Proyecto Desarrollo II\\Back end\\Respaldo\\Proyecto Licitacion\\Proyecto Licitacion.csproj": {
+    "C:\\Users\\JersonMisael\\Downloads\\Back-Liciataciones\\Back-Liciataciones\\Proyecto Licitacion.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\UCH\\Ciclo VII\\01- Desarrollo de Software\\Proyecto Desarrollo II\\Back end\\Respaldo\\Proyecto Licitacion\\Proyecto Licitacion.csproj",
+        "projectUniqueName": "C:\\Users\\JersonMisael\\Downloads\\Back-Liciataciones\\Back-Liciataciones\\Proyecto Licitacion.csproj",
         "projectName": "Proyecto Licitacion",
-        "projectPath": "D:\\UCH\\Ciclo VII\\01- Desarrollo de Software\\Proyecto Desarrollo II\\Back end\\Respaldo\\Proyecto Licitacion\\Proyecto Licitacion.csproj",
-        "packagesPath": "C:\\Users\\USUARIO\\.nuget\\packages\\",
-        "outputPath": "D:\\UCH\\Ciclo VII\\01- Desarrollo de Software\\Proyecto Desarrollo II\\Back end\\Respaldo\\Proyecto Licitacion\\obj\\",
+        "projectPath": "C:\\Users\\JersonMisael\\Downloads\\Back-Liciataciones\\Back-Liciataciones\\Proyecto Licitacion.csproj",
+        "packagesPath": "C:\\Users\\JersonMisael\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\JersonMisael\\Downloads\\Back-Liciataciones\\Back-Liciataciones\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\USUARIO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\JersonMisael\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

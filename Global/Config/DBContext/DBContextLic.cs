@@ -16,6 +16,15 @@ namespace Proyecto_Licitacion.Global.Config.DBContext
         public DbSet<Requerimiento> Requerimientos { get; set; }
         public DbSet<TipoRequerimiento> TipoRequerimientos { get; set; }
         public DbSet<AreaSolicitante> AreaSolicitantes { get; set; }
+        public DbSet<Analista> Analistas { get; set; }
+        public DbSet<Estado> Estados { get; set; }
+        public DbSet<ConfigProceso> ConfigProcesos { get; set; }
+        public DbSet<Proceso> Procesos { get; set; }
+        public DbSet<RondaProveedor> RondaProveedores { get; set; }
+        public DbSet<AdjuntoRondaProveedor> AdjuntoRondaProveedores { get; set; }
+        public DbSet<Proveedor> Proveedores { get; set; }
+        public DbSet<Adjunto> Adjuntos { get; set; }
+        public DbSet<Ronda> Rondas { get; set; }
 
 
     }

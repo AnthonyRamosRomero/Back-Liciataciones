@@ -77,5 +77,23 @@ namespace Proyecto_Licitacion.Controllers
                 return BadRequest(response);
             }
         }
+        /*****************MIGRACION DE DATA********************/
+        [HttpPost("migrateCsvData")]
+        public IActionResult ReadCSV(string file)
+        {
+            IRequerimientoService service = new RequerimientoService(DbContext);
+            Response<List<Requerimiento>> response = new Response<List<Requerimiento>>();
+            try
+            {
+                List<Requerimiento> p = service.migrateCsvData(file).Result;
+                response.ok(true, p, "La siguiente lista fue migrada");
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                response.ok(false, new List<Requerimiento>(), "Error al Migrar la data " + ex.Message);
+                return BadRequest(response);
+            }
+        }
     }
 }
