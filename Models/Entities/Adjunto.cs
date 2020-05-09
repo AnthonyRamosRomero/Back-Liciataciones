@@ -12,7 +12,7 @@ namespace Proyecto_Licitacion.Models.Entities
         [Key]
         public int Id { get; set; }
         public string Path { get; set; }
-        public int FolderId { get; set; }
+        public int FolderId { get; set; } 
         public int DocumentId { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }

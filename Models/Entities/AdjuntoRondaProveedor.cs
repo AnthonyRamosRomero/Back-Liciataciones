@@ -1,6 +1,7 @@
 ﻿    using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
@@ -11,10 +12,12 @@ namespace Proyecto_Licitacion.Models.Entities
     {
         [Key]
         public int Id { get; set; }
-        public int AdjuntoId { get; set; }
-        public Adjunto Adjunto { get; set; }
+        public int AdjuntoId { get; set; } 
+        [ForeignKey ("AdjuntoId")]
+        public virtual Adjunto Adjunto { get; set; }
         public int RondaProveedorId { get; set; }
-        public RondaProveedor RondaProveedor { get; set; }
+        [ForeignKey("RondaProveedorId")]
+        public virtual RondaProveedor RondaProveedor { get; set; }
 
     }
 }

@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Text.Json.Serialization;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Proyecto_Licitacion.Models.Entities
 {
@@ -11,10 +12,12 @@ namespace Proyecto_Licitacion.Models.Entities
     {
         [Key]
         public int Id { get; set; }
-        public int AnalistaId { get; set; }
-        public Analista Analista { get; set; }
+        public int AnalistaId { get; set; } 
+        [ForeignKey("AnalistaId")]
+        public virtual Analista Analista { get; set; }
         public int EstadoId { get; set; }
-        public Estado Estado { get; set; }
+        [ForeignKey("EstadoId")]
+        public virtual Estado Estado { get; set; }
 
         public string FechaTratamiento { get; set; }
         public string FechaAdjudicacion { get; set; }
