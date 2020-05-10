@@ -57,8 +57,8 @@ namespace Proyecto_Licitacion.Services
         /********************MIGRATE DATA**********************/
         private const int ID = 0;
         private const int PATH = 1;
-        private const int FOLDER = 2;
-        private const int DOCUMENT = 0;
+        private const int FOLDER_ID = 2;
+        private const int DOCUMENT_ID = 0;
         private const int NOMBRE = 1;
         private const int DESCRIPCION = 2;
         private const int CONTENT_TYPE = 2;
@@ -77,8 +77,8 @@ namespace Proyecto_Licitacion.Services
                     Adjunto adjunto = new Adjunto();
                     //tipoRequerimiento.Id = int.Parse(atributo[ID]);
                     adjunto.Path = atributo[PATH];
-                    adjunto.FolderId = int.Parse(atributo[FOLDER]);
-                    adjunto.DocumentId = int.Parse(atributo[DOCUMENT]);
+                    adjunto.FolderId = int.Parse(atributo[FOLDER_ID]);
+                    adjunto.DocumentId = int.Parse(atributo[DOCUMENT_ID]);
                     adjunto.Nombre = atributo[NOMBRE];
                     adjunto.Descripcion = atributo[DESCRIPCION];
                     adjunto.ContentType = atributo[CONTENT_TYPE];

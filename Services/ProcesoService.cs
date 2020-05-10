@@ -55,7 +55,7 @@ namespace Proyecto_Licitacion.Services
         }
         /********************MIGRATE DATA**********************/
         private const int ID = 0;
-        private const int CONFIGPROCESO = 1;
+        private const int CONFIG_PROCESO = 1;
         private const int TIPO_PROCESO = 2;
         public async Task<List<Proceso>> migrateCsvData(string file)
         {
@@ -70,7 +70,7 @@ namespace Proyecto_Licitacion.Services
                     string[] atributo = fila.Split(";");
                     Proceso proceso = new Proceso();
                     //tipoRequerimiento.Id = int.Parse(atributo[ID]);
-                    proceso.ConfigProcesoId =int.Parse(atributo[CONFIGPROCESO]);
+                    proceso.ConfigProcesoId =int.Parse(atributo[CONFIG_PROCESO]);
                     proceso.TipoProceso =atributo[TIPO_PROCESO];
                     proceso.Dml = "I";
                     dbContext.Procesos.AddAsync(proceso);

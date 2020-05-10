@@ -61,8 +61,8 @@ namespace Proyecto_Licitacion.Services
         private const int ID = 0;
         private const int ANALISTA = 1;
         private const int ESTADO = 2;
-        private const int FECHATRATAMIENTO = 3;
-        private const int FECHAADJUDICACION = 4;
+        private const int FECHA_TRATAMIENTO = 3;
+        private const int FECHA_ADJUDICACION = 4;
         public async Task<List<ConfigProceso>> migrateCsvData(string file)
         {
             List<ConfigProceso> colection = new List<ConfigProceso>();
@@ -78,8 +78,8 @@ namespace Proyecto_Licitacion.Services
                     //tipoRequerimiento.Id = int.Parse(atributo[ID]);
                     configProceso.AnalistaId = int.Parse(atributo[ANALISTA]);
                     configProceso.EstadoId = int.Parse(atributo[ESTADO]);
-                    configProceso.FechaTratamiento = atributo[FECHATRATAMIENTO];
-                    configProceso.FechaAdjudicacion = atributo[FECHAADJUDICACION];
+                    configProceso.FechaTratamiento = atributo[FECHA_TRATAMIENTO];
+                    configProceso.FechaAdjudicacion = atributo[FECHA_ADJUDICACION];
                     configProceso.Dml = "I";
                     dbContext.ConfigProcesos.AddAsync(configProceso);
                     colection.Add(configProceso);

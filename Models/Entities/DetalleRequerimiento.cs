@@ -20,6 +20,6 @@ namespace Proyecto_Licitacion.Models.Entities
         public virtual Requerimiento Requerimiento { get; set; }
         public int CantidadSolicitada { get; set; }
         public int PrecioUnitarioEstimado { get; set; }
-        public double PrecioTotalEstimado { get; set; }
+        public int PrecioTotalEstimado { get; set; }
     }
 }

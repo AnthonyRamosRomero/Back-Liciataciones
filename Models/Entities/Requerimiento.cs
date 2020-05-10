@@ -24,7 +24,7 @@ namespace Proyecto_Licitacion.Models.Entities
         public virtual ConfigProceso ConfigProceso { get; set; } // No son nulos
         public string UsuarioSolicitante { get; set; }
         public string FechaSolicitud { get; set; }
-        public string FechaEstimadaEntrega { get; set; }
+        public string FechaEstimadaEntrante { get; set; }
 
         /*ONE TO MANY*/
         [JsonIgnore]

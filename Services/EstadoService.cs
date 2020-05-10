@@ -55,12 +55,7 @@ namespace Proyecto_Licitacion.Services
         }
         /********************MIGRATE DATA**********************/
         private const int ID = 0;
-        private const int NOMBRE = 1;
-        private const int APELLIDO = 2;
-        private const int DNI = 3;
-        private const int TELEFONO = 4;
-        private const int CORREO = 5;
-        private const int DIRECCION = 6;
+        private const int DESCRIPCION = 1;
         public async Task<List<Estado>> migrateCsvData(string file)
         {
             List<Estado> colection = new List<Estado>();
@@ -74,12 +69,7 @@ namespace Proyecto_Licitacion.Services
                     string[] atributo = fila.Split(";");
                     Estado estado = new Estado();
                     //tipoRequerimiento.Id = int.Parse(atributo[ID]);
-                    estado.Nombre = atributo[NOMBRE];
-                    estado.Apellido = atributo[APELLIDO];
-                    estado.Dni = int.Parse(atributo[DNI]);
-                    estado.Telefono =int.Parse( atributo[TELEFONO]);
-                    estado.Correo = atributo[CORREO];
-                    estado.Direccion = atributo[DIRECCION];
+                    estado.Descripcion = atributo[DESCRIPCION];
                     estado.Dml = "I";
                     dbContext.Estados.AddAsync(estado);
                     colection.Add(estado);
@@ -87,5 +77,7 @@ namespace Proyecto_Licitacion.Services
             await dbContext.SaveChangesAsync();
             return colection;
         }
+
+
     }
 }

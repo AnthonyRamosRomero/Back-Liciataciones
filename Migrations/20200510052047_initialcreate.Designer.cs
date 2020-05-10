@@ -10,8 +10,8 @@ using Proyecto_Licitacion.Global.Config.DBContext;
 namespace Proyecto_Licitacion.Migrations
 {
     [DbContext(typeof(DBContextLic))]
-    [Migration("20200505032103_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20200510052047_initialcreate")]
+    partial class initialcreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -104,14 +104,29 @@ namespace Proyecto_Licitacion.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Apellido")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Correo")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("CreateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Descripcion")
+                    b.Property<string>("Direccion")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Dml")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Dni")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Nombre")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Telefono")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("UpDateTime")
                         .HasColumnType("datetime2");
@@ -240,8 +255,8 @@ namespace Proyecto_Licitacion.Migrations
                     b.Property<string>("Dml")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("PrecioTotalEstimado")
-                        .HasColumnType("float");
+                    b.Property<int>("PrecioTotalEstimado")
+                        .HasColumnType("int");
 
                     b.Property<int>("PrecioUnitarioEstimado")
                         .HasColumnType("int");
@@ -274,29 +289,14 @@ namespace Proyecto_Licitacion.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Apellido")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Correo")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("CreateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Direccion")
+                    b.Property<string>("Descripcion")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Dml")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Dni")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Nombre")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Telefono")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("UpDateTime")
                         .HasColumnType("datetime2");
@@ -440,7 +440,7 @@ namespace Proyecto_Licitacion.Migrations
                     b.Property<string>("Dml")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FechaEstimadaEntrega")
+                    b.Property<string>("FechaEstimadaEntrante")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FechaSolicitud")

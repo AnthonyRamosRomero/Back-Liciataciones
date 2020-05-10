@@ -59,10 +59,10 @@ namespace Proyecto_Licitacion.Services
     private const int ID = 0;
     private const int TIPO_REQUERIMIENTO= 1;
     private const int AREA_SOLICITANTE= 2;
-    private const int CONFIG_PROCESO = 3;
-    private const int USUARIO_SOLICITANTE = 4;
-    private const int FECHA_SOLICITUD = 5;
-    private const int FECHA_ESTIMADA_ENTREGA = 6;
+    private const int USUARIO_SOLICITANTE = 3;
+    private const int FECHA_SOLICITUD = 4;
+    private const int FECHA_ESTIMADA_ENTRANTE = 5;
+    private const int CONFIG_PROCESO = 6;
 
         public async Task<List<Requerimiento>> migrateCsvData(string file)
     {
@@ -79,10 +79,10 @@ namespace Proyecto_Licitacion.Services
                     //tipoRequerimiento.Id = int.Parse(atributo[ID]);
                 Requerimiento.TipoRequerimientoId = int.Parse(atributo[TIPO_REQUERIMIENTO]);
                 Requerimiento.AreaSolicitanteId = int.Parse(atributo[AREA_SOLICITANTE]);
-                Requerimiento.ConfigProcesoId = int.Parse(atributo[CONFIG_PROCESO]);
                 Requerimiento.UsuarioSolicitante = atributo[USUARIO_SOLICITANTE];
-                Requerimiento.FechaSolicitud = atributo[FECHA_ESTIMADA_ENTREGA];
-                Requerimiento.FechaEstimadaEntrega = atributo[FECHA_ESTIMADA_ENTREGA];
+                Requerimiento.FechaSolicitud = atributo[FECHA_SOLICITUD];
+                Requerimiento.FechaEstimadaEntrante = atributo[FECHA_ESTIMADA_ENTRANTE];
+                Requerimiento.ConfigProcesoId = int.Parse(atributo[CONFIG_PROCESO]);
                 Requerimiento.Dml = "I";
                 dbContext.Requerimientos.AddAsync(Requerimiento);
                 colection.Add(Requerimiento);

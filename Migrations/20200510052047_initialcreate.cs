@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Proyecto_Licitacion.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class initialcreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -39,7 +39,12 @@ namespace Proyecto_Licitacion.Migrations
                     CreateTime = table.Column<DateTime>(nullable: false),
                     UpDateTime = table.Column<DateTime>(nullable: false),
                     UserLogin = table.Column<string>(nullable: true),
-                    Descripcion = table.Column<string>(nullable: true)
+                    Nombre = table.Column<string>(nullable: true),
+                    Apellido = table.Column<string>(nullable: true),
+                    Dni = table.Column<int>(nullable: false),
+                    Telefono = table.Column<int>(nullable: false),
+                    Correo = table.Column<string>(nullable: true),
+                    Direccion = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -92,12 +97,7 @@ namespace Proyecto_Licitacion.Migrations
                     CreateTime = table.Column<DateTime>(nullable: false),
                     UpDateTime = table.Column<DateTime>(nullable: false),
                     UserLogin = table.Column<string>(nullable: true),
-                    Nombre = table.Column<string>(nullable: true),
-                    Apellido = table.Column<string>(nullable: true),
-                    Dni = table.Column<int>(nullable: false),
-                    Telefono = table.Column<int>(nullable: false),
-                    Correo = table.Column<string>(nullable: true),
-                    Direccion = table.Column<string>(nullable: true)
+                    Descripcion = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -240,7 +240,7 @@ namespace Proyecto_Licitacion.Migrations
                     ConfigProcesoId = table.Column<int>(nullable: false),
                     UsuarioSolicitante = table.Column<string>(nullable: true),
                     FechaSolicitud = table.Column<string>(nullable: true),
-                    FechaEstimadaEntrega = table.Column<string>(nullable: true)
+                    FechaEstimadaEntrante = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -303,7 +303,7 @@ namespace Proyecto_Licitacion.Migrations
                     RequerimientoId = table.Column<int>(nullable: false),
                     CantidadSolicitada = table.Column<int>(nullable: false),
                     PrecioUnitarioEstimado = table.Column<int>(nullable: false),
-                    PrecioTotalEstimado = table.Column<double>(nullable: false)
+                    PrecioTotalEstimado = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {

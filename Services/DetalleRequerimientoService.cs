@@ -55,9 +55,9 @@ namespace Proyecto_Licitacion.Services
         }
         /********************MIGRATE DATA**********************/
         private const int ID = 0;
-        private const int PRODUCTO = 1;
-        private const int REQUERIMIENTO = 2;
-        private const int CANTIDADSOLICITADA = 3;
+        private const int REQUERIMIENTO = 1;
+        private const int PRODUCTO = 2;
+        private const int CANTIDAD_SOLICITADA = 3;
         private const int PRECIO_UNITARIO_ESTIMADO = 4;
         private const int PRECIO_TOTAL_ESTIMADO = 5;
         public async Task<List<DetalleRequerimiento>> migrateCsvData(string file)
@@ -75,9 +75,9 @@ namespace Proyecto_Licitacion.Services
                     //tipoRequerimiento.Id = int.Parse(atributo[ID]);
                     detalleRequerimiento.ProductoId = int.Parse(atributo[PRODUCTO]);
                     detalleRequerimiento.RequerimientoId = int.Parse(atributo[REQUERIMIENTO]);
-                    detalleRequerimiento.CantidadSolicitada = int.Parse(atributo[CANTIDADSOLICITADA]);
+                    detalleRequerimiento.CantidadSolicitada = int.Parse(atributo[CANTIDAD_SOLICITADA]);
                     detalleRequerimiento.PrecioUnitarioEstimado = int.Parse(atributo[PRECIO_UNITARIO_ESTIMADO]);
-                    detalleRequerimiento.PrecioTotalEstimado = double.Parse(atributo[PRECIO_TOTAL_ESTIMADO]);
+                    detalleRequerimiento.PrecioTotalEstimado = int.Parse(atributo[PRECIO_TOTAL_ESTIMADO]);
                     detalleRequerimiento.Dml = "I";
                     dbContext.DetalleRequerimientos.AddAsync(detalleRequerimiento);
                     colection.Add(detalleRequerimiento);
