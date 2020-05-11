@@ -12,7 +12,7 @@ namespace Proyecto_Licitacion.Models.Entities
     {
         [Key]
         public int Id { get; set; }
-        public int ProcesoId { get; set; } 
+        public int? ProcesoId { get; set; } 
         [ForeignKey("ProcesoId")]
         public virtual Proceso Proceso { get; set; }
         public string NumeroRonda { get; set; }

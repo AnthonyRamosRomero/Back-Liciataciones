@@ -9061,19 +9061,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\JersonMisael\\.nuget\\packages\\": {}
+    "C:\\Users\\USUARIO\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\JersonMisael\\Downloads\\Back-Liciataciones\\Back-Liciataciones\\Proyecto Licitacion.csproj",
+      "projectUniqueName": "D:\\UCH\\Ciclo VII\\01- Desarrollo de Software\\Proyecto Desarrollo II\\Back end\\Back-Liciataciones\\Proyecto Licitacion.csproj",
       "projectName": "Proyecto Licitacion",
-      "projectPath": "C:\\Users\\JersonMisael\\Downloads\\Back-Liciataciones\\Back-Liciataciones\\Proyecto Licitacion.csproj",
-      "packagesPath": "C:\\Users\\JersonMisael\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\JersonMisael\\Downloads\\Back-Liciataciones\\Back-Liciataciones\\obj\\",
+      "projectPath": "D:\\UCH\\Ciclo VII\\01- Desarrollo de Software\\Proyecto Desarrollo II\\Back end\\Back-Liciataciones\\Proyecto Licitacion.csproj",
+      "packagesPath": "C:\\Users\\USUARIO\\.nuget\\packages\\",
+      "outputPath": "D:\\UCH\\Ciclo VII\\01- Desarrollo de Software\\Proyecto Desarrollo II\\Back end\\Back-Liciataciones\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\JersonMisael\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\USUARIO\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

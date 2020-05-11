@@ -10,8 +10,8 @@ using Proyecto_Licitacion.Global.Config.DBContext;
 namespace Proyecto_Licitacion.Migrations
 {
     [DbContext(typeof(DBContextLic))]
-    [Migration("20200510052047_initialcreate")]
-    partial class initialcreate
+    [Migration("20200510083930_Licitacion")]
+    partial class Licitacion
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -70,7 +70,7 @@ namespace Proyecto_Licitacion.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AdjuntoId")
+                    b.Property<int?>("AdjuntoId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreateTime")
@@ -79,7 +79,7 @@ namespace Proyecto_Licitacion.Migrations
                     b.Property<string>("Dml")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("RondaProveedorId")
+                    b.Property<int?>("RondaProveedorId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("UpDateTime")
@@ -215,7 +215,7 @@ namespace Proyecto_Licitacion.Migrations
                     b.Property<string>("Dml")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("EstadoId")
+                    b.Property<int?>("EstadoId")
                         .HasColumnType("int");
 
                     b.Property<string>("FechaAdjudicacion")
@@ -261,10 +261,10 @@ namespace Proyecto_Licitacion.Migrations
                     b.Property<int>("PrecioUnitarioEstimado")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProductoId")
+                    b.Property<int?>("ProductoId")
                         .HasColumnType("int");
 
-                    b.Property<int>("RequerimientoId")
+                    b.Property<int?>("RequerimientoId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("UpDateTime")
@@ -316,7 +316,7 @@ namespace Proyecto_Licitacion.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ConfigProcesoId")
+                    b.Property<int?>("ConfigProcesoId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreateTime")
@@ -348,7 +348,7 @@ namespace Proyecto_Licitacion.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CategoriaId")
+                    b.Property<int?>("CategoriaId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreateTime")
@@ -428,10 +428,10 @@ namespace Proyecto_Licitacion.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AreaSolicitanteId")
+                    b.Property<int?>("AreaSolicitanteId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ConfigProcesoId")
+                    b.Property<int?>("ConfigProcesoId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreateTime")
@@ -446,7 +446,7 @@ namespace Proyecto_Licitacion.Migrations
                     b.Property<string>("FechaSolicitud")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TipoRequerimientoId")
+                    b.Property<int?>("TipoRequerimientoId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("UpDateTime")
@@ -485,7 +485,7 @@ namespace Proyecto_Licitacion.Migrations
                     b.Property<string>("NumeroRonda")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ProcesoId")
+                    b.Property<int?>("ProcesoId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("UpDateTime")
@@ -514,10 +514,10 @@ namespace Proyecto_Licitacion.Migrations
                     b.Property<string>("Dml")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ProveedorId")
+                    b.Property<int?>("ProveedorId")
                         .HasColumnType("int");
 
-                    b.Property<int>("RondaId")
+                    b.Property<int?>("RondaId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("UpDateTime")
@@ -566,15 +566,11 @@ namespace Proyecto_Licitacion.Migrations
                 {
                     b.HasOne("Proyecto_Licitacion.Models.Entities.Adjunto", "Adjunto")
                         .WithMany("AdjuntoRondaProveedores")
-                        .HasForeignKey("AdjuntoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("AdjuntoId");
 
                     b.HasOne("Proyecto_Licitacion.Models.Entities.RondaProveedor", "RondaProveedor")
                         .WithMany("AdjuntoRondaProveedores")
-                        .HasForeignKey("RondaProveedorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("RondaProveedorId");
                 });
 
             modelBuilder.Entity("Proyecto_Licitacion.Models.Entities.ConfigProceso", b =>
@@ -587,87 +583,65 @@ namespace Proyecto_Licitacion.Migrations
 
                     b.HasOne("Proyecto_Licitacion.Models.Entities.Estado", "Estado")
                         .WithMany("ConfigProcesos")
-                        .HasForeignKey("EstadoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("EstadoId");
                 });
 
             modelBuilder.Entity("Proyecto_Licitacion.Models.Entities.DetalleRequerimiento", b =>
                 {
                     b.HasOne("Proyecto_Licitacion.Models.Entities.Producto", "Producto")
                         .WithMany("DetalleRequerimientos")
-                        .HasForeignKey("ProductoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProductoId");
 
                     b.HasOne("Proyecto_Licitacion.Models.Entities.Requerimiento", "Requerimiento")
                         .WithMany("DetalleRequerimientos")
-                        .HasForeignKey("RequerimientoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("RequerimientoId");
                 });
 
             modelBuilder.Entity("Proyecto_Licitacion.Models.Entities.Proceso", b =>
                 {
                     b.HasOne("Proyecto_Licitacion.Models.Entities.ConfigProceso", "ConfigProceso")
                         .WithMany("Procesos")
-                        .HasForeignKey("ConfigProcesoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ConfigProcesoId");
                 });
 
             modelBuilder.Entity("Proyecto_Licitacion.Models.Entities.Producto", b =>
                 {
                     b.HasOne("Proyecto_Licitacion.Models.Entities.Categoria", "Categoria")
                         .WithMany("Productos")
-                        .HasForeignKey("CategoriaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CategoriaId");
                 });
 
             modelBuilder.Entity("Proyecto_Licitacion.Models.Entities.Requerimiento", b =>
                 {
                     b.HasOne("Proyecto_Licitacion.Models.Entities.AreaSolicitante", "AreaSolicitante")
                         .WithMany("Requerimientos")
-                        .HasForeignKey("AreaSolicitanteId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("AreaSolicitanteId");
 
                     b.HasOne("Proyecto_Licitacion.Models.Entities.ConfigProceso", "ConfigProceso")
                         .WithMany("Requerimientos")
-                        .HasForeignKey("ConfigProcesoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ConfigProcesoId");
 
                     b.HasOne("Proyecto_Licitacion.Models.Entities.TipoRequerimiento", "TipoRequerimiento")
                         .WithMany("Requerimientos")
-                        .HasForeignKey("TipoRequerimientoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("TipoRequerimientoId");
                 });
 
             modelBuilder.Entity("Proyecto_Licitacion.Models.Entities.Ronda", b =>
                 {
                     b.HasOne("Proyecto_Licitacion.Models.Entities.Proceso", "Proceso")
                         .WithMany("Rondas")
-                        .HasForeignKey("ProcesoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProcesoId");
                 });
 
             modelBuilder.Entity("Proyecto_Licitacion.Models.Entities.RondaProveedor", b =>
                 {
                     b.HasOne("Proyecto_Licitacion.Models.Entities.Proveedor", "Proveedor")
                         .WithMany("RondaProveedores")
-                        .HasForeignKey("ProveedorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProveedorId");
 
                     b.HasOne("Proyecto_Licitacion.Models.Entities.Ronda", "Ronda")
                         .WithMany("RondaProveedores")
-                        .HasForeignKey("RondaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("RondaId");
                 });
 #pragma warning restore 612, 618
         }

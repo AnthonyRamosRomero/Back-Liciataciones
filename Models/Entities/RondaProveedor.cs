@@ -12,10 +12,10 @@ namespace Proyecto_Licitacion.Models.Entities
     {
         [Key]
         public int Id { get; set; }
-        public int RondaId { get; set; }
+        public int? RondaId { get; set; }
         [ForeignKey("RondaId")]
         public virtual Ronda Ronda { get; set; }
-        public int ProveedorId { get; set; }
+        public int? ProveedorId { get; set; }
         [ForeignKey("ProveedorId")]
         public virtual Proveedor Proveedor { get; set; }
 

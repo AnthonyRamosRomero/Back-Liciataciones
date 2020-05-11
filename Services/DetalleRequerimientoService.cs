@@ -34,7 +34,11 @@ namespace Proyecto_Licitacion.Services
 
         public async Task<List<DetalleRequerimiento>> finAll()
         {
-            return await dbContext.DetalleRequerimientos.ToListAsync();
+            return await dbContext
+                        .DetalleRequerimientos
+                        .Include(o => o.Producto)
+                        .Include(o => o.Requerimiento)
+                        .ToListAsync();
         }
 
         public async Task<DetalleRequerimiento> findById(int Id)
@@ -46,13 +50,32 @@ namespace Proyecto_Licitacion.Services
 
         public async Task<DetalleRequerimiento> save(DetalleRequerimiento detallerequerimiento)
         {
-               detallerequerimiento.Dml = "I";
+            detallerequerimiento.Dml = "I";
                 detallerequerimiento.UpDateTime = new DateTime();
                 detallerequerimiento.CreateTime = new DateTime();
                 dbContext.DetalleRequerimientos.Add(detallerequerimiento);
             await dbContext.SaveChangesAsync();
             return detallerequerimiento;
         }
+
+
+        public async Task<List<DetalleRequerimiento>> save(List<DetalleRequerimiento> list)
+        {
+            List<DetalleRequerimiento> response = new List<DetalleRequerimiento>();
+            list.ForEach(data =>
+            {
+                DetalleRequerimiento detallerequerimiento = new DetalleRequerimiento();
+                detallerequerimiento.Dml = "I";
+                detallerequerimiento.UpDateTime = new DateTime();
+                detallerequerimiento.CreateTime = new DateTime();
+                dbContext.DetalleRequerimientos.Add(detallerequerimiento);
+                response.Add(detallerequerimiento);
+            });
+            await dbContext.SaveChangesAsync();
+            return response;
+        }
+
+
         /********************MIGRATE DATA**********************/
         private const int ID = 0;
         private const int REQUERIMIENTO = 1;

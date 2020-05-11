@@ -1,8 +1,6 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Controllers",
-    "\\Global",
     "\\Global\\Config",
     "\\Global\\Config\\Cors",
     "\\Global\\Config\\DBContext",

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Proyecto_Licitacion.Migrations
 {
-    public partial class initialcreate : Migration
+    public partial class Licitacion : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -156,7 +156,7 @@ namespace Proyecto_Licitacion.Migrations
                     Nombre = table.Column<string>(nullable: true),
                     UnidadMedida = table.Column<string>(nullable: true),
                     Descripcion = table.Column<string>(nullable: true),
-                    CategoriaId = table.Column<int>(nullable: false)
+                    CategoriaId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -166,7 +166,7 @@ namespace Proyecto_Licitacion.Migrations
                         column: x => x.CategoriaId,
                         principalTable: "Categorias",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -180,7 +180,7 @@ namespace Proyecto_Licitacion.Migrations
                     UpDateTime = table.Column<DateTime>(nullable: false),
                     UserLogin = table.Column<string>(nullable: true),
                     AnalistaId = table.Column<int>(nullable: false),
-                    EstadoId = table.Column<int>(nullable: false),
+                    EstadoId = table.Column<int>(nullable: true),
                     FechaTratamiento = table.Column<string>(nullable: true),
                     FechaAdjudicacion = table.Column<string>(nullable: true)
                 },
@@ -198,7 +198,7 @@ namespace Proyecto_Licitacion.Migrations
                         column: x => x.EstadoId,
                         principalTable: "Estados",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -211,7 +211,7 @@ namespace Proyecto_Licitacion.Migrations
                     CreateTime = table.Column<DateTime>(nullable: false),
                     UpDateTime = table.Column<DateTime>(nullable: false),
                     UserLogin = table.Column<string>(nullable: true),
-                    ConfigProcesoId = table.Column<int>(nullable: false),
+                    ConfigProcesoId = table.Column<int>(nullable: true),
                     TipoProceso = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -222,7 +222,7 @@ namespace Proyecto_Licitacion.Migrations
                         column: x => x.ConfigProcesoId,
                         principalTable: "ConfigProcesos",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -235,9 +235,9 @@ namespace Proyecto_Licitacion.Migrations
                     CreateTime = table.Column<DateTime>(nullable: false),
                     UpDateTime = table.Column<DateTime>(nullable: false),
                     UserLogin = table.Column<string>(nullable: true),
-                    TipoRequerimientoId = table.Column<int>(nullable: false),
-                    AreaSolicitanteId = table.Column<int>(nullable: false),
-                    ConfigProcesoId = table.Column<int>(nullable: false),
+                    TipoRequerimientoId = table.Column<int>(nullable: true),
+                    AreaSolicitanteId = table.Column<int>(nullable: true),
+                    ConfigProcesoId = table.Column<int>(nullable: true),
                     UsuarioSolicitante = table.Column<string>(nullable: true),
                     FechaSolicitud = table.Column<string>(nullable: true),
                     FechaEstimadaEntrante = table.Column<string>(nullable: true)
@@ -250,19 +250,19 @@ namespace Proyecto_Licitacion.Migrations
                         column: x => x.AreaSolicitanteId,
                         principalTable: "AreaSolicitantes",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Requerimientos_ConfigProcesos_ConfigProcesoId",
                         column: x => x.ConfigProcesoId,
                         principalTable: "ConfigProcesos",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Requerimientos_TipoRequerimientos_TipoRequerimientoId",
                         column: x => x.TipoRequerimientoId,
                         principalTable: "TipoRequerimientos",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -275,7 +275,7 @@ namespace Proyecto_Licitacion.Migrations
                     CreateTime = table.Column<DateTime>(nullable: false),
                     UpDateTime = table.Column<DateTime>(nullable: false),
                     UserLogin = table.Column<string>(nullable: true),
-                    ProcesoId = table.Column<int>(nullable: false),
+                    ProcesoId = table.Column<int>(nullable: true),
                     NumeroRonda = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -286,7 +286,7 @@ namespace Proyecto_Licitacion.Migrations
                         column: x => x.ProcesoId,
                         principalTable: "Procesos",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -299,8 +299,8 @@ namespace Proyecto_Licitacion.Migrations
                     CreateTime = table.Column<DateTime>(nullable: false),
                     UpDateTime = table.Column<DateTime>(nullable: false),
                     UserLogin = table.Column<string>(nullable: true),
-                    ProductoId = table.Column<int>(nullable: false),
-                    RequerimientoId = table.Column<int>(nullable: false),
+                    ProductoId = table.Column<int>(nullable: true),
+                    RequerimientoId = table.Column<int>(nullable: true),
                     CantidadSolicitada = table.Column<int>(nullable: false),
                     PrecioUnitarioEstimado = table.Column<int>(nullable: false),
                     PrecioTotalEstimado = table.Column<int>(nullable: false)
@@ -313,13 +313,13 @@ namespace Proyecto_Licitacion.Migrations
                         column: x => x.ProductoId,
                         principalTable: "Productos",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_DetalleRequerimientos_Requerimientos_RequerimientoId",
                         column: x => x.RequerimientoId,
                         principalTable: "Requerimientos",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -332,8 +332,8 @@ namespace Proyecto_Licitacion.Migrations
                     CreateTime = table.Column<DateTime>(nullable: false),
                     UpDateTime = table.Column<DateTime>(nullable: false),
                     UserLogin = table.Column<string>(nullable: true),
-                    RondaId = table.Column<int>(nullable: false),
-                    ProveedorId = table.Column<int>(nullable: false)
+                    RondaId = table.Column<int>(nullable: true),
+                    ProveedorId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -343,13 +343,13 @@ namespace Proyecto_Licitacion.Migrations
                         column: x => x.ProveedorId,
                         principalTable: "Proveedores",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_RondaProveedores_Rondas_RondaId",
                         column: x => x.RondaId,
                         principalTable: "Rondas",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -362,8 +362,8 @@ namespace Proyecto_Licitacion.Migrations
                     CreateTime = table.Column<DateTime>(nullable: false),
                     UpDateTime = table.Column<DateTime>(nullable: false),
                     UserLogin = table.Column<string>(nullable: true),
-                    AdjuntoId = table.Column<int>(nullable: false),
-                    RondaProveedorId = table.Column<int>(nullable: false)
+                    AdjuntoId = table.Column<int>(nullable: true),
+                    RondaProveedorId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -373,13 +373,13 @@ namespace Proyecto_Licitacion.Migrations
                         column: x => x.AdjuntoId,
                         principalTable: "Adjuntos",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_AdjuntoRondaProveedores_RondaProveedores_RondaProveedorId",
                         column: x => x.RondaProveedorId,
                         principalTable: "RondaProveedores",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(

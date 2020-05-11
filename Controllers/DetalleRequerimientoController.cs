@@ -58,6 +58,25 @@ namespace Proyecto_Licitacion.Controllers
             }
         }
 
+
+        [HttpPost("saveListDetalleRequerimiento")]
+        public IActionResult SaveDetalleRequerimiento(List<DetalleRequerimiento> list)
+        {
+            Response<List<DetalleRequerimiento>> response = new Response<List<DetalleRequerimiento>>();
+            try
+            {
+                IDetalleRequerimientoService service = new DetalleRequerimientoService(DbContext);
+                Task<List<DetalleRequerimiento>> p = service.save(list);
+                response.ok(true, p.Result, "Se inserto detalle");
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                response.ok(false, null, "Error en el servicio " + ex.Message);
+                return BadRequest(response);
+            }
+        }
+
         // DELETE api/<controller>/5
         [HttpGet("deletedetallerequerimiento")]
         public IActionResult DeleteRequerimientotById(int Id)

@@ -33,7 +33,11 @@ namespace Proyecto_Licitacion.Services
 
         public async Task<List<Requerimiento>> finAll()
         {
-            return await dbContext.Requerimientos.ToListAsync();
+            return await dbContext
+                        .Requerimientos
+                        .Include(o => o.AreaSolicitante)
+                        .Include(o => o.TipoRequerimiento)
+                        .ToListAsync();
         }
 
         public async Task<Requerimiento> findById(int Id)

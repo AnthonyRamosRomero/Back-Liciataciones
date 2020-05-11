@@ -15,7 +15,7 @@ namespace Proyecto_Licitacion.Models.Entities
         public string Nombre { get; set; }
         public string UnidadMedida { get; set; }
         public string Descripcion { get; set; }
-        public int CategoriaId { get; set; }
+        public int? CategoriaId { get; set; }
         [ForeignKey("CategoriaId")]
         public virtual Categoria Categoria { get; set; }
 

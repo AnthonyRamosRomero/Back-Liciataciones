@@ -15,7 +15,7 @@ namespace Proyecto_Licitacion.Models.Entities
         public int AnalistaId { get; set; } 
         [ForeignKey("AnalistaId")]
         public virtual Analista Analista { get; set; }
-        public int EstadoId { get; set; }
+        public int? EstadoId { get; set; }
         [ForeignKey("EstadoId")]
         public virtual Estado Estado { get; set; }
 

@@ -12,7 +12,8 @@ namespace Proyecto_Licitacion.Services.Interfaces
         {
 
             Task<DetalleRequerimiento> save(DetalleRequerimiento detallerequerimiento);
-            Task<List<DetalleRequerimiento>> finAll();
+            Task<List<DetalleRequerimiento>> save(List<DetalleRequerimiento> list);
+        Task<List<DetalleRequerimiento>> finAll();
             Task<DetalleRequerimiento> findById(int Id);
             Task<DetalleRequerimiento> deleteById(int Id);
         /*Carga de data*/
