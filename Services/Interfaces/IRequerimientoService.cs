@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Proyecto_Licitacion.Models.Dto;
 using Proyecto_Licitacion.Models.Entities;
 
 namespace Proyecto_Licitacion.Services.Interfaces
@@ -15,6 +16,7 @@ namespace Proyecto_Licitacion.Services.Interfaces
         Task<Requerimiento> findById(int Id);
         Task<Requerimiento> deleteById(int Id);
 
+        Task<MonitorRequerimientoDTO> saveMonitorRequerimiento(MonitorRequerimientoDTO monitorRequerimiento);
         /*Carga de data*/
         Task<List<Requerimiento>> migrateCsvData(string file);
 

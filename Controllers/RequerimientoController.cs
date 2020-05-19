@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Proyecto_Licitacion.Global.Config.DBContext;
+using Proyecto_Licitacion.Models.Dto;
 using Proyecto_Licitacion.Models.Entities;
 using Proyecto_Licitacion.Services;
 using Proyecto_Licitacion.Services.Interfaces;
@@ -77,6 +78,28 @@ namespace Proyecto_Licitacion.Controllers
                 return BadRequest(response);
             }
         }
+
+
+        [HttpPost("saveMonitorRequerimiento")]
+        public IActionResult SaveMonitorRequerimiento(MonitorRequerimientoDTO monitorRequerimiento)
+        {
+            IRequerimientoService service = new RequerimientoService(DbContext);
+            Response<MonitorRequerimientoDTO> response = new Response<MonitorRequerimientoDTO>();
+            try
+            {
+                MonitorRequerimientoDTO o = service.saveMonitorRequerimiento(monitorRequerimiento).Result;
+                response.ok(true, o, "La siguiente informacion fue guardada!");
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                response.ok(false, new MonitorRequerimientoDTO());
+                return BadRequest(response);
+            }
+        }
+
+
+
         /*****************MIGRACION DE DATA********************/
         [HttpPost("migrateCsvData")]
         public IActionResult ReadCSV(string file)

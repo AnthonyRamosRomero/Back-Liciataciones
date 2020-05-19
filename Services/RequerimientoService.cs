@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Proyecto_Licitacion.Global.Config.DBContext;
+using Proyecto_Licitacion.Models.Dto;
 using Proyecto_Licitacion.Models.Entities;
 using Proyecto_Licitacion.Services.Interfaces;
 
@@ -95,5 +96,35 @@ namespace Proyecto_Licitacion.Services
         return colection;
     }
 
-}
+        public async Task<MonitorRequerimientoDTO> saveMonitorRequerimiento(MonitorRequerimientoDTO monitorRequerimiento)
+        {
+            MonitorRequerimientoDTO response = new MonitorRequerimientoDTO();
+            List<DetalleRequerimiento> detalleResponse = new List<DetalleRequerimiento>();
+
+            Requerimiento req = monitorRequerimiento.Requerimiento;
+
+            req.Dml = "I";
+            req.FechaSolicitud = new DateTime().ToString();
+            req.CreateTime = new DateTime();
+            dbContext.Requerimientos.AddAsync(req);
+            await dbContext.SaveChangesAsync();
+            response.Requerimiento = monitorRequerimiento.Requerimiento;
+
+            monitorRequerimiento
+                .DetalleRequerimiento
+                //.Where(dd => dd != null)
+                //.ToList()
+                .ForEach( async o =>
+                {
+                    o.Dml = "I";
+                    o.CreateTime = new DateTime();
+                    o.RequerimientoId = req.Id;
+                    o.Producto = null;
+                    dbContext.DetalleRequerimientos.AddAsync(o);
+                    detalleResponse.Add(o);
+                });
+            await dbContext.SaveChangesAsync();
+            return response;
+        }
+    }
 }

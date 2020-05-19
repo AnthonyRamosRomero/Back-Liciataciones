@@ -277,7 +277,7 @@ namespace Proyecto_Licitacion.Migrations
 
                     b.HasIndex("RequerimientoId");
 
-                    b.ToTable("DetalleRequerimientos");
+                    b.ToTable("DetalleRequerimiento");
                 });
 
             modelBuilder.Entity("Proyecto_Licitacion.Models.Entities.Estado", b =>
@@ -587,11 +587,11 @@ namespace Proyecto_Licitacion.Migrations
             modelBuilder.Entity("Proyecto_Licitacion.Models.Entities.DetalleRequerimiento", b =>
                 {
                     b.HasOne("Proyecto_Licitacion.Models.Entities.Producto", "Producto")
-                        .WithMany("DetalleRequerimientos")
+                        .WithMany("DetalleRequerimiento")
                         .HasForeignKey("ProductoId");
 
                     b.HasOne("Proyecto_Licitacion.Models.Entities.Requerimiento", "Requerimiento")
-                        .WithMany("DetalleRequerimientos")
+                        .WithMany("DetalleRequerimiento")
                         .HasForeignKey("RequerimientoId");
                 });
 
