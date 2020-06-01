@@ -22,7 +22,7 @@ namespace Proyecto_Licitacion.Controllers
         /******************METHODS****************/
 
         /******************Lista Proveedores****************/
-        [HttpGet, Route("/listProvider")]
+        [HttpGet("listProvider")]
         public IActionResult Get()
         {
             Response<List<Proveedor>> response = new Response<List<Proveedor>>();
@@ -41,7 +41,7 @@ namespace Proyecto_Licitacion.Controllers
         }
 
         /******************Guarda Proveedores****************/
-        [HttpPost, Route("/saveProvider")]
+        [HttpPost("saveProvider")]
         public IActionResult SaveProveedor(Proveedor proveedor)
         {
             Response<Proveedor> response = new Response<Proveedor>();
@@ -60,7 +60,7 @@ namespace Proyecto_Licitacion.Controllers
         }
 
         /******************Borra Proveedores****************/
-        [HttpGet, Route("/deleteProvider")]
+        [HttpGet("deleteProvider")]
         public IActionResult DeleteProviderById(int Id)
         {
             IProveedorService service = new ProveedorService(DbContext);

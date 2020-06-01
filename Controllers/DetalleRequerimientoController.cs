@@ -40,6 +40,25 @@ namespace Proyecto_Licitacion.Controllers
                 return BadRequest(response);
             }
         }
+
+        [HttpGet("FindByIdRequerimiento")]
+        public IActionResult FindByIdRequerimiento(int idRequerimiento)
+        {
+            Response<List<DetalleRequerimiento>> response = new Response<List<DetalleRequerimiento>>();
+            IDetalleRequerimientoService p = new DetalleRequerimientoService(DbContext);
+            try
+            {
+                List<DetalleRequerimiento> listdetallerequerimiento = p.findAllByIdRequerimiento(idRequerimiento).Result;
+                response.ok(true, listdetallerequerimiento, "Detalle Listos");
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                response.ok(false, new List<DetalleRequerimiento>(), "No hay Detalle en la lista");
+                return BadRequest(response);
+            }
+        }
+
         [HttpPost("savedetallerequerimiento")]
         public IActionResult SaveDetalleRequerimiento(DetalleRequerimiento detalleRequerimiento)
         {

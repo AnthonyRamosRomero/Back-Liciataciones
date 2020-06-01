@@ -8,7 +8,7 @@ namespace Proyecto_Licitacion.Services.Interfaces
 {
     interface IConfigProcesoService
     {
-        Task<ConfigProceso> save(ConfigProceso configProceso);
+        Task<ConfigProceso> save(ConfigProceso configProceso, int idRequerimiento);
         Task<List<ConfigProceso>> finAll();
         Task<ConfigProceso> findById(int Id);
         Task<ConfigProceso> deleteById(int Id);

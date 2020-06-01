@@ -109,6 +109,15 @@ namespace Proyecto_Licitacion.Services
             return colection;
         }
 
+        public async Task<List<DetalleRequerimiento>> findAllByIdRequerimiento(int IdRequerimiento)
+        {
+            return dbContext.DetalleRequerimientos
+                .Where(o => o.RequerimientoId == IdRequerimiento)
+                .Include(o => o.Requerimiento)
+                .Include(o => o.Producto)
+                .Include(o => o.Producto.Categoria)
+                .ToList();
+        }
     }
 
 }

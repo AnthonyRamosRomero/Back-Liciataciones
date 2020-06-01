@@ -47,12 +47,20 @@ namespace Proyecto_Licitacion.Services
    
    
 
-        public async Task<ConfigProceso> save(ConfigProceso configProceso)
+        public async Task<ConfigProceso> save(ConfigProceso configProceso, int idRequerimiento)
         {
             configProceso.Dml = "I";
             configProceso.UpDateTime = new DateTime();
             configProceso.CreateTime = new DateTime();
+            configProceso.FechaTratamiento = new DateTime().ToString();
             dbContext.ConfigProcesos.Add(configProceso);
+            await dbContext.SaveChangesAsync();
+
+            /*Relacionarlo con la tabla requerimiento*/
+            Requerimiento requerimiento = dbContext.Requerimientos.FindAsync(idRequerimiento).Result;
+            requerimiento.ConfigProcesoId = configProceso.Id;
+
+            dbContext.Requerimientos.Update(requerimiento);
             await dbContext.SaveChangesAsync();
             return configProceso;
 

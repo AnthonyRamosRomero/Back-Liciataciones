@@ -41,6 +41,26 @@ namespace Proyecto_Licitacion.Controllers
             }
         }
 
+        /******************GET ESTADO****************/
+        [HttpGet("FindById")]
+        public IActionResult FindById(int id)
+        {
+            Response<Estado> response = new Response<Estado>();
+            IEstadoService p = new EstadoService(DbContext);
+            try
+            {
+                Estado estado = p.findById(id).Result;
+                response.ok(true, estado, "Estado");
+                return Ok(response);
+                
+            }
+            catch (Exception ex)
+            {
+                response.ok(false, new Estado(), "No se encontro algun estado con el id " + id);
+                return BadRequest(response);
+            }
+        }
+
         /******************Guarda Areas Solicitantes****************/
         [HttpPost("saveEstado")]
         public IActionResult SaveEstado(Estado estado)

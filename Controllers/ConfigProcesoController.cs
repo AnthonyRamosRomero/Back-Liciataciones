@@ -43,13 +43,13 @@ namespace Proyecto_Licitacion.Controllers
 
         /******************Guarda Areas Solicitantes****************/
         [HttpPost("saveConfigProceso")]
-        public IActionResult SaveConfigProceso(ConfigProceso configProceso)
+        public IActionResult SaveConfigProceso(ConfigProceso configProceso, int idRequerimiento)
         {
             Response<ConfigProceso> response = new Response<ConfigProceso>();
             try
             {
                 IConfigProcesoService service = new ConfigProcesoService(DbContext);
-                Task<ConfigProceso> p = service.save(configProceso);
+                Task<ConfigProceso> p = service.save(configProceso, idRequerimiento);
                 response.ok(true, p.Result, "Se inserto ConfigProceso");
                 return Ok(response);
             }

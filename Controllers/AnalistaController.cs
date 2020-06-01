@@ -41,6 +41,26 @@ namespace Proyecto_Licitacion.Controllers
             }
         }
 
+        /**************************GET ANALISTA BY ID************************/
+        [HttpGet("findById")]
+        public IActionResult FindById(int id)
+        {
+            Response<Analista> response = new Response<Analista>();
+            IAnalistaService p = new AnalistaService(DbContext);
+            try
+            {
+                Analista analista = p.findById(id).Result;
+                response.ok(true, analista, "Analista:");
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                response.ok(false, new Analista(), "El analista con el id " + id + " No existe");
+                return BadRequest(response);
+            }
+        }
+
+
         /******************Guarda Areas Solicitantes****************/
         [HttpPost("saveAnalista")]
         public IActionResult SaveAnalista(Analista analista)
