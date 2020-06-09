@@ -17,5 +17,6 @@ namespace Proyecto_Licitacion.Services.Interfaces
 
         /*Carga de data*/
         Task<List<Adjunto>> migrateCsvData(string file);
+        Task<>
     }
 }

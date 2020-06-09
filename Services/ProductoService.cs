@@ -33,7 +33,7 @@ namespace Proyecto_Licitacion.Services
 
         public async Task<List<Producto>> finAll()
         {
-            return await dbContext.Productos.ToListAsync();
+            return await dbContext.Productos.Include(o => o.Categoria).ToListAsync();
         }
 
         public async Task<Producto> findById(int Id)

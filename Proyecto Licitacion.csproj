@@ -24,6 +24,8 @@
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="Interfaces\" />
+    <Folder Include="Mail\Models\" />
+    <Folder Include="Mail\Controller\" />
     <Folder Include="Services\Interfaces\" />
   </ItemGroup>
 </Project>
