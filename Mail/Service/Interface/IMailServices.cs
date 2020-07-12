@@ -7,5 +7,6 @@ namespace Proyecto_Licitacion.Mail.Service.Interface
 {
     interface IMailServices
     {
+        /**/
     }
 }
