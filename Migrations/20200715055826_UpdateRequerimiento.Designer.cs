@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Proyecto_Licitacion.Global.Config.DBContext;
 
 namespace Proyecto_Licitacion.Migrations
 {
     [DbContext(typeof(DBContextLic))]
-    partial class DBContextLicModelSnapshot : ModelSnapshot
+    [Migration("20200715055826_UpdateRequerimiento")]
+    partial class UpdateRequerimiento
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -20,15 +20,14 @@ namespace Proyecto_Licitacion.Models.Entities
         public virtual Estado Estado { get; set; }
 
         public string FechaTratamiento { get; set; }
-        public string FechaAdjudicacion { get; set; }
+        //public string FechaAdjudicacion { get; set; }
 
+        public int? RequerimientoId { get; set; }
+        [ForeignKey("RequerimientoId")]
+        public virtual Requerimiento Requerimiento { get; set; }
 
         [JsonIgnore]
         public virtual List<Proceso> Procesos { get; set; }
-
-        [JsonIgnore]
-        public virtual List<Requerimiento> Requerimientos { get; set; }
-
 
     }
 }

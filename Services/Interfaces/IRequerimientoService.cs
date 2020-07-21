@@ -15,6 +15,7 @@ namespace Proyecto_Licitacion.Services.Interfaces
         Task<List<Requerimiento>> finAll();
         Task<Requerimiento> findById(int Id);
         Task<Requerimiento> deleteById(int Id);
+        Task<String> SaveConfigurationInitial(ConfigProceso configProceso);
 
         Task<MonitorRequerimientoDTO> saveMonitorRequerimiento(MonitorRequerimientoDTO monitorRequerimiento);
         /*Carga de data*/

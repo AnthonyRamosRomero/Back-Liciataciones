@@ -290,7 +290,7 @@ namespace Proyecto_Licitacion.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "DetalleRequerimiento",
+                name: "DetalleRequerimientos",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -404,12 +404,12 @@ namespace Proyecto_Licitacion.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_DetalleRequerimientos_ProductoId",
-                table: "DetalleRequerimiento",
+                table: "DetalleRequerimientos",
                 column: "ProductoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_DetalleRequerimientos_RequerimientoId",
-                table: "DetalleRequerimiento",
+                table: "DetalleRequerimientos",
                 column: "RequerimientoId");
 
             migrationBuilder.CreateIndex(
@@ -459,7 +459,7 @@ namespace Proyecto_Licitacion.Migrations
                 name: "AdjuntoRondaProveedores");
 
             migrationBuilder.DropTable(
-                name: "DetalleRequerimiento");
+                name: "DetalleRequerimientos");
 
             migrationBuilder.DropTable(
                 name: "Adjuntos");

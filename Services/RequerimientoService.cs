@@ -45,6 +45,8 @@ namespace Proyecto_Licitacion.Services
         {
             if(Id == null || Id == 0) return new Requerimiento();
             Requerimiento requerimiento = await dbContext.Requerimientos.FindAsync(Id);
+            dbContext.Requerimientos.ToList();
+
             return requerimiento;
         }
 
@@ -87,7 +89,6 @@ namespace Proyecto_Licitacion.Services
                 Requerimiento.UsuarioSolicitante = atributo[USUARIO_SOLICITANTE];
                 Requerimiento.FechaSolicitud = atributo[FECHA_SOLICITUD];
                 Requerimiento.FechaEstimadaEntrante = atributo[FECHA_ESTIMADA_ENTRANTE];
-                Requerimiento.ConfigProcesoId = int.Parse(atributo[CONFIG_PROCESO]);
                 Requerimiento.Dml = "I";
                 dbContext.Requerimientos.AddAsync(Requerimiento);
                 colection.Add(Requerimiento);
@@ -125,6 +126,11 @@ namespace Proyecto_Licitacion.Services
                 });
             await dbContext.SaveChangesAsync();
             return response;
+        }
+
+        public Task<string> SaveConfigurationInitial(ConfigProceso configProceso)
+        {
+            throw new NotImplementedException();
         }
     }
 }

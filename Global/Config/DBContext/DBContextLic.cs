@@ -25,6 +25,8 @@ namespace Proyecto_Licitacion.Global.Config.DBContext
         public DbSet<Proveedor> Proveedores { get; set; }
         public DbSet<Adjunto> Adjuntos { get; set; }
         public DbSet<Ronda> Rondas { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<ReqProveedor> ReqProveedors { get; set; }
 
 
     }

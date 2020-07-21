@@ -19,5 +19,7 @@ namespace Proyecto_Licitacion.Models.Entities
 
         [JsonIgnore]
         public virtual List<ConfigProceso> ConfigProcesos { get; set; }
+        [JsonIgnore]
+        public virtual List<Usuario> Usuarios { get; set; }
     }
 }

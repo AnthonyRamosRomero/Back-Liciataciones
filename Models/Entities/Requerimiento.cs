@@ -19,15 +19,24 @@ namespace Proyecto_Licitacion.Models.Entities
         public int? AreaSolicitanteId { get; set; } 
         [ForeignKey("AreaSolicitanteId")]//ClaveForanea
         public virtual AreaSolicitante AreaSolicitante { get; set; }
-        public int? ConfigProcesoId { get; set; }
-        [ForeignKey("ConfigProcesoId")]
-        public virtual ConfigProceso ConfigProceso { get; set; } // No son nulos
+        
         public string UsuarioSolicitante { get; set; }
         public string FechaSolicitud { get; set; }
         public string FechaEstimadaEntrante { get; set; }
+        public string TieneRFI { get; set; }
+        public string TieneVisitaCampo { get; set; }
+        public string NotificarPostores { get; set; }
+        public Double MontoReferencial { get; set; }
+        public DateTime FechaAdjudicacion { get; set; }
+
+        public String Anulado { get; set; }
 
         /*ONE TO MANY*/
         [JsonIgnore]
         public virtual List<DetalleRequerimiento> DetalleRequerimientos { get; set; }
+        [JsonIgnore]
+        public virtual List<ReqProveedor> ReqProveedors{ get; set; }
+        [JsonIgnore]
+        public virtual List<ConfigProceso> ConfigProcesos { get; set; }
     }
 }

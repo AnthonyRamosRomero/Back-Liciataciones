@@ -21,6 +21,8 @@ namespace Proyecto_Licitacion.Models.Entities
         /*ONE TO MANY*/
         [JsonIgnore]
         public virtual List<RondaProveedor> RondaProveedores { get; set; }
+        [JsonIgnore]
+        public virtual List<ReqProveedor> ReqProveedors { get; set; }
 
     }
 }

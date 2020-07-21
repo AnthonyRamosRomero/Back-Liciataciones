@@ -58,7 +58,7 @@ namespace Proyecto_Licitacion.Services
 
             /*Relacionarlo con la tabla requerimiento*/
             Requerimiento requerimiento = dbContext.Requerimientos.FindAsync(idRequerimiento).Result;
-            requerimiento.ConfigProcesoId = configProceso.Id;
+            
 
             dbContext.Requerimientos.Update(requerimiento);
             await dbContext.SaveChangesAsync();
@@ -87,7 +87,6 @@ namespace Proyecto_Licitacion.Services
                     configProceso.AnalistaId = int.Parse(atributo[ANALISTA]);
                     configProceso.EstadoId = int.Parse(atributo[ESTADO]);
                     configProceso.FechaTratamiento = atributo[FECHA_TRATAMIENTO];
-                    configProceso.FechaAdjudicacion = atributo[FECHA_ADJUDICACION];
                     configProceso.Dml = "I";
                     dbContext.ConfigProcesos.AddAsync(configProceso);
                     colection.Add(configProceso);

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Proyecto_Licitacion.Global.Config.DBContext;
 
 namespace Proyecto_Licitacion.Migrations
 {
     [DbContext(typeof(DBContextLic))]
-    partial class DBContextLicModelSnapshot : ModelSnapshot
+    [Migration("20200715043431_newEntityUsuario")]
+    partial class newEntityUsuario
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -216,11 +218,11 @@ namespace Proyecto_Licitacion.Migrations
                     b.Property<int?>("EstadoId")
                         .HasColumnType("int");
 
-                    b.Property<string>("FechaTratamiento")
+                    b.Property<string>("FechaAdjudicacion")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("RequerimientoId")
-                        .HasColumnType("int");
+                    b.Property<string>("FechaTratamiento")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpDateTime")
                         .HasColumnType("datetime2");
@@ -233,8 +235,6 @@ namespace Proyecto_Licitacion.Migrations
                     b.HasIndex("AnalistaId");
 
                     b.HasIndex("EstadoId");
-
-                    b.HasIndex("RequerimientoId");
 
                     b.ToTable("ConfigProcesos");
                 });
@@ -421,43 +421,6 @@ namespace Proyecto_Licitacion.Migrations
                     b.ToTable("Proveedores");
                 });
 
-            modelBuilder.Entity("Proyecto_Licitacion.Models.Entities.ReqProveedor", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Dml")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Ganador")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("ProveedorId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("RequerimientoId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("UpDateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("UserLogin")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProveedorId");
-
-                    b.HasIndex("RequerimientoId");
-
-                    b.ToTable("ReqProveedors");
-                });
-
             modelBuilder.Entity("Proyecto_Licitacion.Models.Entities.Requerimiento", b =>
                 {
                     b.Property<int>("Id")
@@ -465,10 +428,10 @@ namespace Proyecto_Licitacion.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Anulado")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int?>("AreaSolicitanteId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ConfigProcesoId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreateTime")
@@ -477,17 +440,11 @@ namespace Proyecto_Licitacion.Migrations
                     b.Property<string>("Dml")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("FechaAdjudicacion")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("FechaEstimadaEntrante")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FechaSolicitud")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("MontoReferencial")
-                        .HasColumnType("float");
 
                     b.Property<string>("NotificarPostores")
                         .HasColumnType("nvarchar(max)");
@@ -513,6 +470,8 @@ namespace Proyecto_Licitacion.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AreaSolicitanteId");
+
+                    b.HasIndex("ConfigProcesoId");
 
                     b.HasIndex("TipoRequerimientoId");
 
@@ -669,10 +628,6 @@ namespace Proyecto_Licitacion.Migrations
                     b.HasOne("Proyecto_Licitacion.Models.Entities.Estado", "Estado")
                         .WithMany("ConfigProcesos")
                         .HasForeignKey("EstadoId");
-
-                    b.HasOne("Proyecto_Licitacion.Models.Entities.Requerimiento", "Requerimiento")
-                        .WithMany("ConfigProcesos")
-                        .HasForeignKey("RequerimientoId");
                 });
 
             modelBuilder.Entity("Proyecto_Licitacion.Models.Entities.DetalleRequerimiento", b =>
@@ -700,22 +655,15 @@ namespace Proyecto_Licitacion.Migrations
                         .HasForeignKey("CategoriaId");
                 });
 
-            modelBuilder.Entity("Proyecto_Licitacion.Models.Entities.ReqProveedor", b =>
-                {
-                    b.HasOne("Proyecto_Licitacion.Models.Entities.Proveedor", "Proveedor")
-                        .WithMany("ReqProveedors")
-                        .HasForeignKey("ProveedorId");
-
-                    b.HasOne("Proyecto_Licitacion.Models.Entities.Requerimiento", "Requerimiento")
-                        .WithMany("ReqProveedors")
-                        .HasForeignKey("RequerimientoId");
-                });
-
             modelBuilder.Entity("Proyecto_Licitacion.Models.Entities.Requerimiento", b =>
                 {
                     b.HasOne("Proyecto_Licitacion.Models.Entities.AreaSolicitante", "AreaSolicitante")
                         .WithMany("Requerimientos")
                         .HasForeignKey("AreaSolicitanteId");
+
+                    b.HasOne("Proyecto_Licitacion.Models.Entities.ConfigProceso", "ConfigProceso")
+                        .WithMany("Requerimientos")
+                        .HasForeignKey("ConfigProcesoId");
 
                     b.HasOne("Proyecto_Licitacion.Models.Entities.TipoRequerimiento", "TipoRequerimiento")
                         .WithMany("Requerimientos")

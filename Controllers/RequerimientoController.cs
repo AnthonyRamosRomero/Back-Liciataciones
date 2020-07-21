@@ -100,6 +100,24 @@ namespace Proyecto_Licitacion.Controllers
 
 
 
+        [HttpPost("SaveConfigurationInitial")]
+        public IActionResult SaveConfigurationInitial(ConfigProceso configProceso)
+        {
+            IRequerimientoService service = new RequerimientoService(DbContext);
+            Response<String> response = new Response<String>();
+            try
+            {
+                string o = "OKI";
+                response.ok(true, o, "La siguiente lista fue migrada");
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                response.ok(false, "ERROR", "Error Al Configurar el proceso" + ex.Message);
+                return BadRequest(response);
+            }
+        }
+
         /*****************MIGRACION DE DATA********************/
         [HttpPost("migrateCsvData")]
         public IActionResult ReadCSV(string file)
